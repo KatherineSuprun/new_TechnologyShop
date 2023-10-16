@@ -1,5 +1,6 @@
 package com.example.mainapp.dto;
 
+import com.example.mainapp.repository.ImageRepo;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,9 +20,9 @@ public class AdPosterDto {
 
     private String city;
 
-    List<ReviewDto> reviews;
+    List<ImageRepo> reviews;
 
-    List<AdvertisementDto> advertisements;
+    List<ProductDto> advertisements;
 
 }
 

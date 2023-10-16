@@ -31,15 +31,9 @@ public class AdPoster {
 
     private String city;
 
-    @OneToMany// просмотреть все свои объявления
-    private List<Advertisement> adList;
-
-    @OneToOne
+/*    @OneToOne
     private User user;
 
-    @ManyToMany
-    @JoinTable(name = "posters_advertisement",
-    joinColumns = @JoinColumn(name = "posters_id"))
-    private List<Advertisement> advertisements;
-
+    @OneToMany()
+    private List<Product> productsList;*/
 }

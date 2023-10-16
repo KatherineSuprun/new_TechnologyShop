@@ -3,6 +3,7 @@ package com.example.mainapp.service;
 import com.example.mainapp.dto.UserDetailsImpl;
 import com.example.mainapp.entity.User;
 import com.example.mainapp.repository.UserRepo;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;

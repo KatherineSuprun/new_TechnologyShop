@@ -1,9 +1,11 @@
 package com.example.mainapp.repository;
 
-import com.example.mainapp.entity.Review;
+import com.example.mainapp.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ReviewRepo extends JpaRepository<Review, Long> {
+public interface ProductRepo extends JpaRepository<Product, Long> {
+
+
 }

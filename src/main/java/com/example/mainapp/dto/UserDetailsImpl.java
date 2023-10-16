@@ -10,21 +10,28 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+
 @AllArgsConstructor // генерирует конструктор с 1 параметром для каждого поля
-@Data // заменяет @Getter @Setter и @RequiredArgsConstructor
-public class UserDetailsImpl implements UserDetails {   //для использования аутентификации (Spring Security) нужно реализовать интерфейс
-    // инжектим юзера
+@Data // заменяет @Getter @Setter и @RequiredArgsConstructor, to string
+public class UserDetailsImpl implements UserDetails {
+
     private final User user;
 
 
-    @Override // от UserDetailsImpl
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getRole()))
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public String getPassword() {
         return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return user.getUsername();
+        return user.getName();
     }
 
     @Override
@@ -47,3 +54,6 @@ public class UserDetailsImpl implements UserDetails {   //для использ�
         return true;
     }
 }
+
+
+
