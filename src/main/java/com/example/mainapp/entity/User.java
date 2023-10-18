@@ -6,8 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -30,7 +29,7 @@ public class User {
    // @Column(name = "phone_number")
     private String phoneNumber;
   //  @Column(name = "active")
-    private boolean active; // пока пользователь не подтвердит аккаунт - он будет неактивным\кидать в бан
+    //private boolean active; // пока пользователь не подтвердит аккаунт - он будет неактивным\кидать в бан
 
 
   //  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER) // при удалении юзера удалится всё
@@ -46,7 +45,7 @@ public class User {
     @Enumerated(EnumType.STRING)  // преобразовать enum в тип String (конвертация)
     private Set<Roles> roles = new HashSet<>(); // id юзеров и их роли таблица
   //  @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user" )
-   // private List<Product> products = new ArrayList<>();
+   // private List<Product> products.html = new ArrayList<>();
 
     private LocalDateTime dateOfCreated; // дата создания аккаунта
 
@@ -58,4 +57,7 @@ public class User {
         dateOfCreated = LocalDateTime.now(); //
     }
 
+    public User getProductList() {
+        return getProductList();
+    }
 }

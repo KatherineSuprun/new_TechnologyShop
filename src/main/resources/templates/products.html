@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>STORE</title>
+</head>
+<body>
+<h1> STORE </h1>
+<if user.email??>
+
+    <ul>
+        <li th:each="products : ${product}" th:text="${vacancy.header}">
+        </li>
+    </ul>
+
+    <#list products as product>
+    <div>
+        <p><b>${product.title}</b> ${product.price} UAH(₴)
+            | <a href="/products/${product.id}">Details</a></p>
+    </div>
+    <#else>
+    <h3>No products available</h3>
+    </list>
+    <!--форма для добавления объявления доступна только зареганому пользователю с имейлом в базе-->
+    <#if user.email??>
+    <hr>
+    <h3>Create new product</h3> // указывает что можно также передавать файловый тип
+    <form action="/product/create" method="post" enctype="multipart/form-data">
+        Ad name: <input type="text" name="title"/><br><br>
+        Description of the ad: <input type="text" name="description"/><br><br>
+        Price: <input type="number" name="price"/><br><br>
+        City: <input type="text" name="city"/><br><br>
+        First photo: <input type="file" name="file1"/><br><br>
+        Second photo: <input type="file" name="file2"/><br><br>
+        Third photo: <input type="file" name="file3"/><br><br>
+
+        <input type="hidden" name="_csrf" value="${_csrf.token}">
+        <input type="submit" value="Add product">
+    </form>
+</if>
+</body>
+</html>

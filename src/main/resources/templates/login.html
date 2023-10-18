@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TECH-STORE</title>
+    <meta charset="UTF-8">
+</head>
+<h3>♥ Welcome to Tech Store ♥ </i></h3>
+<hr>
+<a href="/admin">Login to account</a>
+<br><br>
+<form action="/logout" method="post"> <!-- выход из аккаунта -->
+    <input type="hidden" name="_csrf" value="${_csrf.token}">
+    <input type="submit" value="Logout"/>
+</form>
+
+<hr>
+<h3>Original electronics...</h3>
+<form action="/" method="get">
+    <h4> Search by ad name:
+        <input type="submit" value="Search">
+    </h4>
+</form>
+</html>

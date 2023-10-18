@@ -17,7 +17,7 @@ public class UserDetailsImpl implements UserDetails {
 
     private final User user;
 
-
+// SECURITY
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getRole()))

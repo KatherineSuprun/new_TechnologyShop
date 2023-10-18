@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TECH-STORE</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>TECH-STORE</h1>
+<hr>
+<h4>Panel Admin</h4>
+<table>
+    <tr>
+        <th>Email</th>
+        <th>Number Phone</th>
+        <th>Active</th>
+        <th>Roles</th>
+        <th>Edit</th>
+        <th>Info</th>
+    </tr>
+    <tr>
+        <td>User Email</td>
+        <td>User Phone Number</td>
+        <td>true or false</td>
+        <td>User Roles</td>
+        <td>
+            <form action="/admin/user/ban" method="post">
+                <input type="hidden" name="_csrf" value="_csrf.token">
+                <input type="submit" value="Ban">
+            </form>
+        </td>
+        <td><a href="/admin/user/edit">Edit</a></td>
+        <td><a href="/user/information">Information</a></td>
+    </tr>
+</table>
+
+<input type="submit" value="Exit">
+<h4>Original electronics</h4>
+<form action="/admin" method="get">
+    Find name: <input type="text" name="title"><br>
+    <input type="submit" value="Find">
+</form>
+
+<div>
+    <p><b>Product Title</b> Product Price | <a href="/product/product-id">Description...</a></p>
+</div>
+
+<hr>
+<h3>Info</h3>
+<form action="/product/create" method="post" enctype="multipart/form-data">
+    Title: <input type="text" name="title"><br><br>
+    Description: <input type="text" name="description"><br><br>
+    Price: <input type="number" name="price"><br><br>
+    City: <input type="text" name="city"><br><br>
+    AdPoster: <input type="text" name="author"><br><br>
+    Image 1: <input type="file" name="file1"><br><br>
+    Image 2: <input type="file" name="file2"><br><br>
+    Image 3: <input type="file" name="file3"><br><br>
+    <input type="submit" value="OK">
+    <input type="hidden" name="_csrf" value="_csrf.token">
+</form>
+</body>
+</html>

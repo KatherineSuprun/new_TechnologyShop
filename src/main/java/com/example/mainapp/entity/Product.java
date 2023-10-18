@@ -1,5 +1,6 @@
 package com.example.mainapp.entity;
 
+import com.example.mainapp.repository.ProductRepo;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "products")
+@Table(name = "products.html")
 public class Product {
 
 
@@ -68,7 +69,5 @@ public class Product {
     public Product getTitle() {
         return getTitle();
     }
-    public Product getProductById(Product product, Long id) {
-        return product;
-    }
+
 }
