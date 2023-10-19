@@ -110,7 +110,7 @@
                 <artifactId>liquibase-maven-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <changeLogFile>db/changelog/db.changelog-master.yaml</changeLogFile>
+                    <changeLogFile>db/changelog/db.changelog-master.yml</changeLogFile>
                 </configuration>
             </plugin>
         </plugins>

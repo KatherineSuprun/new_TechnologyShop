@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TECH-STORE</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>TECH-STORE</h1>
+<h3>Information about user ${user.name}</h3>
+<h4>Products user ${user.name}</h4>
+<ul>
+    <#list products as product>
+    <li>
+        <b>${product.title}</b> ${product.price} UAH(₴) |
+        <a href="/products/${product.id}">Details</a>
+    </li>
+</#list>
+</ul>
+<#if errorMessage??>
+<h2>${errorMessage}</h2>
+</#if>
+</body>
+</html>

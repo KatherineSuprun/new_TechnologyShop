@@ -49,6 +49,6 @@ public class UserController {
     public String userInfo(@PathVariable("user") User user, Model model) {
         model.addAttribute("user", user);
         model.addAttribute("products", user.getProductList());
-        return "user.info";
+        return "user-info";
     }
 }

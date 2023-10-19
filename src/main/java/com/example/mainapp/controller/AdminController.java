@@ -23,15 +23,15 @@ public class AdminController {
         this.userService = userService;
     }
 
-    @GetMapping("admin")
-    public String Admin(Model model) {
+    @GetMapping("/admin")
+    public String admin(Model model) {
         model.addAttribute("users", userService.list());
         return "admin";
     }
 
     @PostMapping("/admin/user/ban/{id}")
     public String userBan(@PathVariable("id") Long id) {
-        //userService.BanUser(id);
+        userService.BanUser(id);
         return "redirect:/admin";
     }
 
@@ -39,7 +39,7 @@ public class AdminController {
     public String userEdit(@PathVariable("user") User user, Model model) {
         model.addAttribute("user", user);
         model.addAttribute("roles", BeanDefinitionDsl.Role.values());
-        return "user.edit";
+        return "user-edit";
     }
 
     public String userEdit(@RequestParam("userId") User user, @RequestParam Map<String, String> form) {

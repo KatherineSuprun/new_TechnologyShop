@@ -43,7 +43,6 @@ public class UserService { // регистрация и сохранение ю�
         return true;
     }
 
-    /*
         public void BanUser(Long id) {
             User user=userRepo.findById(id).orElse(null);
             if(user !=null){
@@ -56,7 +55,7 @@ public class UserService { // регистрация и сохранение ю�
             }
             userRepo.save(user);
         }
-    */
+
     public List<User> list() {
         return userRepo.findAll();
     }

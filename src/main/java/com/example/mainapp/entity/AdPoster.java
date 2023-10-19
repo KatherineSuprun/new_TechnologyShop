@@ -31,9 +31,9 @@ public class AdPoster {
 
     private String city;
 
-/*    @OneToOne
+    @OneToOne
     private User user;
 
     @OneToMany()
-    private List<Product> productsList;*/
+    private List<Product> productsList;
 }

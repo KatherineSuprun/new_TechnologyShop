@@ -1,16 +1,26 @@
 package com.example.mainapp.config;
 
 
+import com.example.mainapp.security.JwtFilter;
 import com.example.mainapp.service.UserDetailsServiceImpl;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
 @Configuration
@@ -18,28 +28,30 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     private final UserDetailsServiceImpl service;
+    private final JwtFilter jwtFilter;
 
-    public SecurityConfig(UserDetailsServiceImpl service) {
+    public SecurityConfig(UserDetailsServiceImpl service, JwtFilter jwtFilter) {
         this.service = service;
+        this.jwtFilter = jwtFilter;
     }
 
-    @Bean
+/*    @Bean
     protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/", "/registration").permitAll()
-                        .requestMatchers("/product/**", "/images/**","/user/**")
+                        .requestMatchers("/product/**", "/images/**", "/registration", "/user/**")
                         .hasAnyAuthority("ADMIN","USER")
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
-                        .loginPage("/login")
+                        .loginPage("/product")
                         .permitAll()
                 )
                 .logout(LogoutConfigurer::permitAll);
 
         return http.build();
-    }
+    }*/
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(service)
                 .passwordEncoder(passwordEncoder());
@@ -49,8 +61,7 @@ public class SecurityConfig {
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(8);
     }
-}
-/*
+
     public SecurityConfig(JwtFilter jwtFilter,
                           UserDetailsServiceImpl service) {
         this.jwtFilter = jwtFilter;
@@ -103,7 +114,7 @@ public class SecurityConfig {
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
-    }*/
-
+    }
+}
 
 

@@ -40,8 +40,8 @@ public class Product {
     @Column(name = "city")
     private String city;
 
-    /*@ManyToOne
-    private AdPoster adPosters;*/
+    @ManyToOne
+    private AdPoster adPosters;
 
 
     // ALL чтобы удаляло абсолютно все фото в связке при удалении этого товара,
@@ -61,6 +61,11 @@ public class Product {
     private void init() {
         dateOfCreated = LocalDateTime.now();
     }
+
+
+
+
+
     public void addImageToProduct(Image image) {
         image.setProduct(this); // установили текущий товар
         images.add(image);

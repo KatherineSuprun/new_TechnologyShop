@@ -43,7 +43,7 @@ public class Image {
         @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
         private Product product;
 
- /*   @ManyToOne
-    private AdPoster adPoster;*/
+    @ManyToOne
+    private AdPoster adPoster;
 
 }
